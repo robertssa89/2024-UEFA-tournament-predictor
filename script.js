@@ -1,5 +1,6 @@
 console.log("Welcome to the 2024 UEFA tournament predictor!");
 
+// array of group objects, name: A-F, teams: array of teams in each group
 groups = [
   {
     name: "A",
@@ -27,6 +28,7 @@ groups = [
   }
 ];
 
+// array of team objects for each country in the 2024 tournament, each object has a team name and slogan
 teams = [
   {country: "Germany", slogan: "Dschland, Dschland!"}, 
   {country: "Switzerland", slogan: "Hopp Schwiiz!"}, 
@@ -53,9 +55,11 @@ teams = [
   {country: "Czech Republic", slogan: "Gratuluji Krocanovi!"},
   {country: "Georgia", slogan: "Gilotsav Sakartvelo!"}
 ];
+  
+//empty array to store random winners of each group stage
+let winners = [];
 
-  let winners = [];
-
+//randomly selects group winners, builds the winners array, and outputs each winner
 const pickWinners = () => {
   groups.forEach(group => {
     let randomNumber = Math.floor(Math.random() * 4);
@@ -65,14 +69,17 @@ const pickWinners = () => {
   });  
 };
 
+//selects and outputs the group winner that scored the most goals and the number of goals scored (between 5 and 9) 
 const mostGroupGoals = () => {
   let randomGoals = Math.floor((Math.random() * 5) + 5);
   let randomWinner = Math.floor(Math.random() * 6);
   console.log(`${winners[randomWinner]} scored the most goals in the group stages with ${randomGoals} goals!`);
 }
 
+//picks a team to win the whole tournement
 const tourneyWinner = teams[Math.floor(Math.random() * 24)];
 
+//outputs the winning team and that teams's slogan
 const congrats = (team) => {
   console.log(`${team.country} is our pick for tournament winner. ${team.slogan}`);
 }
